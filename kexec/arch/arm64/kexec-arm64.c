@@ -51,10 +51,25 @@ const struct arch_map_entry arches[] = {
 	{ NULL, 0 },
 };
 
+int fitImage_arm64_probe(const char *kernel_buf, off_t kernel_size) {
+	printf("fitImage_arm64_probe\n");
+	return 0;
+}
+
+int fitImage_arm64_load(int argc, char **argv, const char *kernel_buf, off_t kernel_size, struct kexec_info *info) {
+	printf("fitImage_arm64_load\n");
+	return 0;
+}
+
+void fitImage_arm64_usage(void) {
+	printf("fitImage_arm64_usage\n");
+}
+
 struct file_type file_type[] = {
 	{"vmlinux", elf_arm64_probe, elf_arm64_load, elf_arm64_usage},
 	{"Image", image_arm64_probe, image_arm64_load, image_arm64_usage},
 	{"uImage", uImage_arm64_probe, uImage_arm64_load, uImage_arm64_usage},
+	{"fitImage", fitImage_arm64_probe, fitImage_arm64_load, fitImage_arm64_usage},
 };
 
 int file_types = sizeof(file_type) / sizeof(file_type[0]);
